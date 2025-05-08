@@ -9,8 +9,8 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
               <FaGraduationCap className="text-primary text-2xl" />
-              <Link href="/">
-                <a className="font-heading font-bold text-2xl text-white">ClassConnect</a>
+              <Link href="/" className="font-heading font-bold text-2xl text-white">
+                ClassConnect
               </Link>
             </div>
             <p className="text-neutral-light mb-6">
@@ -38,33 +38,33 @@ export default function Footer() {
           <div>
             <h3 className="font-heading font-bold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-3">
-              <li><Link href="/"><a className="text-neutral-light hover:text-white transition">Home</a></Link></li>
-              <li><Link href="#explore"><a className="text-neutral-light hover:text-white transition">Explore Classes</a></Link></li>
-              <li><Link href="#about"><a className="text-neutral-light hover:text-white transition">About Us</a></Link></li>
-              <li><Link href="#contact"><a className="text-neutral-light hover:text-white transition">Contact</a></Link></li>
-              <li><Link href="#"><a className="text-neutral-light hover:text-white transition">FAQ</a></Link></li>
+              <li><Link href="/" className="text-neutral-light hover:text-white transition">Home</Link></li>
+              <li><Link href="#explore" className="text-neutral-light hover:text-white transition">Explore Classes</Link></li>
+              <li><Link href="#about" className="text-neutral-light hover:text-white transition">About Us</Link></li>
+              <li><Link href="#contact" className="text-neutral-light hover:text-white transition">Contact</Link></li>
+              <li><Link href="#" className="text-neutral-light hover:text-white transition">FAQ</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-heading font-bold text-lg mb-4">Resources</h3>
             <ul className="space-y-3">
-              <li><Link href="#"><a className="text-neutral-light hover:text-white transition">Blog</a></Link></li>
-              <li><Link href="#"><a className="text-neutral-light hover:text-white transition">Partner with Us</a></Link></li>
-              <li><Link href="#"><a className="text-neutral-light hover:text-white transition">Become an Instructor</a></Link></li>
-              <li><Link href="#"><a className="text-neutral-light hover:text-white transition">List Your Space</a></Link></li>
-              <li><Link href="#"><a className="text-neutral-light hover:text-white transition">Student Discounts</a></Link></li>
+              <li><Link href="#" className="text-neutral-light hover:text-white transition">Blog</Link></li>
+              <li><Link href="#" className="text-neutral-light hover:text-white transition">Partner with Us</Link></li>
+              <li><Link href="#" className="text-neutral-light hover:text-white transition">Become an Instructor</Link></li>
+              <li><Link href="#" className="text-neutral-light hover:text-white transition">List Your Space</Link></li>
+              <li><Link href="#" className="text-neutral-light hover:text-white transition">Student Discounts</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-heading font-bold text-lg mb-4">Legal</h3>
             <ul className="space-y-3">
-              <li><Link href="#"><a className="text-neutral-light hover:text-white transition">Terms of Service</a></Link></li>
-              <li><Link href="#"><a className="text-neutral-light hover:text-white transition">Privacy Policy</a></Link></li>
-              <li><Link href="#"><a className="text-neutral-light hover:text-white transition">Cookie Policy</a></Link></li>
-              <li><Link href="#"><a className="text-neutral-light hover:text-white transition">Accessibility</a></Link></li>
-              <li><Link href="#"><a className="text-neutral-light hover:text-white transition">GDPR Compliance</a></Link></li>
+              <li><Link href="#" className="text-neutral-light hover:text-white transition">Terms of Service</Link></li>
+              <li><Link href="#" className="text-neutral-light hover:text-white transition">Privacy Policy</Link></li>
+              <li><Link href="#" className="text-neutral-light hover:text-white transition">Cookie Policy</Link></li>
+              <li><Link href="#" className="text-neutral-light hover:text-white transition">Accessibility</Link></li>
+              <li><Link href="#" className="text-neutral-light hover:text-white transition">GDPR Compliance</Link></li>
             </ul>
           </div>
         </div>
@@ -73,9 +73,9 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-neutral-light text-sm mb-4 md:mb-0">&copy; {new Date().getFullYear()} ClassConnect. All rights reserved.</p>
             <div className="flex space-x-6">
-              <Link href="#"><a className="text-neutral-light hover:text-white transition text-sm">Privacy Policy</a></Link>
-              <Link href="#"><a className="text-neutral-light hover:text-white transition text-sm">Terms of Service</a></Link>
-              <Link href="#"><a className="text-neutral-light hover:text-white transition text-sm">Cookie Settings</a></Link>
+              <Link href="#" className="text-neutral-light hover:text-white transition text-sm">Privacy Policy</Link>
+              <Link href="#" className="text-neutral-light hover:text-white transition text-sm">Terms of Service</Link>
+              <Link href="#" className="text-neutral-light hover:text-white transition text-sm">Cookie Settings</Link>
             </div>
           </div>
         </div>
