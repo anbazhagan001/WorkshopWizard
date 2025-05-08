@@ -102,12 +102,15 @@ export class MemStorage implements IStorage {
       title: "Web Development Bootcamp",
       description: "Learn HTML, CSS, and JavaScript fundamentals in this intensive workshop for beginners.",
       price: 75,
-      category: "Technology",
+      category: "tech",
       location: "Tech Hub, University District",
       date: "Oct 15, 2023",
       time: "9:00 AM - 4:00 PM",
       seats: 12,
-      imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"
+      imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4",
+      format: "in-person",
+      startDate: new Date("2023-10-15T09:00:00Z"),
+      rating: 5
     });
     
     // Acrylic Painting for Beginners
@@ -115,12 +118,15 @@ export class MemStorage implements IStorage {
       title: "Acrylic Painting for Beginners",
       description: "Explore basic acrylic painting techniques and complete your own canvas artwork.",
       price: 45,
-      category: "Art & Design",
+      category: "art",
       location: "Creative Commons Studio",
       date: "Oct 20, 2023",
       time: "6:00 PM - 9:00 PM",
       seats: 3,
-      imageUrl: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b"
+      imageUrl: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b",
+      format: "in-person",
+      startDate: new Date("2023-10-20T18:00:00Z"),
+      rating: 4
     });
     
     // Yoga for Stress Relief
@@ -128,18 +134,94 @@ export class MemStorage implements IStorage {
       title: "Yoga for Stress Relief",
       description: "A gentle yoga class focused on techniques to release tension and manage stress.",
       price: 20,
-      category: "Fitness",
+      category: "fitness",
       location: "Mindful Studio, Downtown",
       date: "Oct 18, 2023",
       time: "5:30 PM - 6:45 PM",
       seats: 2,
-      imageUrl: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0"
+      imageUrl: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0",
+      format: "in-person",
+      startDate: new Date("2023-10-18T17:30:00Z"),
+      rating: 5
+    });
+    
+    // Introduction to Digital Marketing
+    this.addClass({
+      title: "Introduction to Digital Marketing",
+      description: "Learn the fundamentals of digital marketing including SEO, social media, and content strategy.",
+      price: 60,
+      category: "business",
+      location: "Online",
+      date: "Oct 25, 2023",
+      time: "6:00 PM - 8:00 PM",
+      seats: 15,
+      imageUrl: "https://images.unsplash.com/photo-1533750516457-a7f992034fec",
+      format: "online",
+      startDate: new Date("2023-10-25T18:00:00Z"),
+      rating: 4
+    });
+    
+    // Italian Cooking Basics
+    this.addClass({
+      title: "Italian Cooking Basics",
+      description: "Learn to prepare authentic Italian pasta, sauces, and appetizers in this hands-on cooking class.",
+      price: 55,
+      category: "cooking",
+      location: "Culinary Institute, West Campus",
+      date: "Oct 22, 2023",
+      time: "2:00 PM - 5:00 PM",
+      seats: 8,
+      imageUrl: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f",
+      format: "in-person",
+      startDate: new Date("2023-10-22T14:00:00Z"),
+      rating: 5
+    });
+    
+    // Beginner's Spanish
+    this.addClass({
+      title: "Beginner's Spanish",
+      description: "An introduction to Spanish language for absolute beginners, focusing on conversation skills.",
+      price: 40,
+      category: "language",
+      location: "Online",
+      date: "Oct 30, 2023",
+      time: "7:00 PM - 8:30 PM",
+      seats: 10,
+      imageUrl: "https://images.unsplash.com/photo-1513363884914-2ff10bf7d9f8",
+      format: "online",
+      startDate: new Date("2023-10-30T19:00:00Z"),
+      rating: 4
+    });
+    
+    // Guitar for Beginners
+    this.addClass({
+      title: "Guitar for Beginners",
+      description: "Learn basic guitar chords and techniques to play your favorite songs.",
+      price: 35,
+      category: "music",
+      location: "Sound Studio, Downtown",
+      date: "Nov 5, 2023",
+      time: "1:00 PM - 3:00 PM",
+      seats: 5,
+      imageUrl: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1",
+      format: "in-person",
+      startDate: new Date("2023-11-05T13:00:00Z"),
+      rating: 5
     });
   }
   
   private addClass(classData: InsertClass): void {
     const id = this.classId++;
-    const classItem: Class = { ...classData, id };
+    
+    // Ensure all required fields have values
+    const defaultedData = {
+      ...classData,
+      format: classData.format || 'in-person',
+      rating: classData.rating !== undefined ? classData.rating : 5,
+      startDate: classData.startDate || new Date()
+    };
+    
+    const classItem: Class = { ...defaultedData, id };
     this.classes.set(id, classItem);
   }
 }

@@ -1,8 +1,9 @@
-import { MapPin, Calendar, Share2, Heart } from "lucide-react";
+import { MapPin, Calendar, Share2, Heart, Monitor, Users, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Class } from "@shared/schema";
 import { toast } from "@/hooks/use-toast";
+import { Badge } from "@/components/ui/badge";
 
 interface ClassCardProps {
   classItem: Class;
@@ -91,9 +92,21 @@ export default function ClassCard({ classItem }: ClassCardProps) {
           <MapPin className="mr-2 h-4 w-4" />
           <span>{classItem.location}</span>
         </div>
-        <div className="flex items-center text-secondary mb-6">
+        <div className="flex items-center text-secondary mb-3">
           <Calendar className="mr-2 h-4 w-4" />
           <span>{classItem.date} • {classItem.time}</span>
+        </div>
+        
+        <div className="flex flex-wrap gap-2 mb-6">
+          <Badge variant={classItem.format === "online" ? "outline" : "default"} className="flex items-center gap-1">
+            {classItem.format === "online" ? <Monitor className="h-3 w-3" /> : <Users className="h-3 w-3" />}
+            {classItem.format === "online" ? "Online" : "In-Person"}
+          </Badge>
+          
+          <Badge variant="secondary" className="flex items-center gap-1">
+            <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+            {classItem.rating || 5}/5
+          </Badge>
         </div>
         <div className="flex justify-between items-center">
           <div className="flex">
