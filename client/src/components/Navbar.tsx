@@ -84,10 +84,12 @@ export default function Navbar() {
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className="cursor-pointer">
-                    <User className="mr-2 h-4 w-4" />
-                    <span>Profile</span>
-                  </DropdownMenuItem>
+                  <Link href="/dashboard">
+                    <DropdownMenuItem className="cursor-pointer">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Dashboard</span>
+                    </DropdownMenuItem>
+                  </Link>
                   <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Logout</span>
@@ -158,6 +160,15 @@ export default function Navbar() {
                     </Avatar>
                     <span className="font-medium">Hello, {user.username}</span>
                   </div>
+                  <Link href="/dashboard" className="w-full">
+                    <Button 
+                      variant="default" 
+                      className="flex items-center justify-center space-x-2 w-full"
+                    >
+                      <User className="h-4 w-4" />
+                      <span>Dashboard</span>
+                    </Button>
+                  </Link>
                   <Button 
                     variant="outline" 
                     className="flex items-center justify-center space-x-2"
