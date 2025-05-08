@@ -7,6 +7,9 @@ import NotFound from "@/pages/NotFound";
 import Home from "@/pages/Home";
 import AboutUs from "@/pages/AboutUs";
 import ExploreClasses from "@/pages/ExploreClasses";
+import AuthPage from "@/pages/auth-page";
+import { AuthProvider } from "@/hooks/use-auth";
+import { ProtectedRoute } from "@/lib/protected-route";
 
 function Router() {
   return (
@@ -14,6 +17,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/about" component={AboutUs} />
       <Route path="/explore" component={ExploreClasses} />
+      <Route path="/auth" component={AuthPage} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -22,10 +26,12 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

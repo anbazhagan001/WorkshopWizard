@@ -6,6 +6,9 @@ import { fromZodError } from "zod-validation-error";
 import { setupAuth } from "./auth";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Set up authentication routes
+  setupAuth(app);
+
   // Health check endpoint for CI/CD monitoring
   app.get('/health', async (_req: Request, res: Response) => {
     res.json({ 
