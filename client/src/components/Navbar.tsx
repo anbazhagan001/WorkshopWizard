@@ -1,14 +1,39 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { FaGraduationCap } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, User, LogOut } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, logoutMutation } = useAuth();
+  const [, navigate] = useLocation();
   
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+  
+  const handleLogout = () => {
+    logoutMutation.mutate(undefined, {
+      onSuccess: () => {
+        navigate("/");
+      }
+    });
+  };
+  
+  const handleAuthNavigation = () => {
+    navigate("/auth");
+    setIsMobileMenuOpen(false);
   };
   
   return (
@@ -45,12 +70,47 @@ export default function Navbar() {
           </div>
           
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
-              Login
-            </Button>
-            <Button className="bg-primary text-white hover:bg-primary-dark">
-              Sign Up
-            </Button>
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+                    <Avatar>
+                      <AvatarFallback className="bg-primary text-white">
+                        {user.username.substring(0, 2).toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="cursor-pointer">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Logout</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <>
+                <Button 
+                  variant="outline" 
+                  className="border-primary text-primary hover:bg-primary hover:text-white"
+                  onClick={handleAuthNavigation}
+                >
+                  Login
+                </Button>
+                <Button 
+                  className="bg-primary text-white hover:bg-primary-dark"
+                  onClick={handleAuthNavigation}
+                >
+                  Sign Up
+                </Button>
+              </>
+            )}
           </div>
           
           {/* Mobile Menu Button */}
@@ -88,14 +148,42 @@ export default function Navbar() {
               <Link href="/#contact" className="font-medium text-secondary-dark hover:text-primary transition py-2">
                 Contact
               </Link>
-              <div className="flex space-x-2 pt-2">
-                <Button variant="outline" className="flex-1 border-primary text-primary hover:bg-primary hover:text-white">
-                  Login
-                </Button>
-                <Button className="flex-1 bg-primary text-white hover:bg-primary-dark">
-                  Sign Up
-                </Button>
-              </div>
+              {user ? (
+                <div className="flex flex-col space-y-2 pt-2">
+                  <div className="flex items-center space-x-2 py-2">
+                    <Avatar>
+                      <AvatarFallback className="bg-primary text-white">
+                        {user.username.substring(0, 2).toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                    <span className="font-medium">Hello, {user.username}</span>
+                  </div>
+                  <Button 
+                    variant="outline" 
+                    className="flex items-center justify-center space-x-2"
+                    onClick={handleLogout}
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span>Logout</span>
+                  </Button>
+                </div>
+              ) : (
+                <div className="flex space-x-2 pt-2">
+                  <Button 
+                    variant="outline" 
+                    className="flex-1 border-primary text-primary hover:bg-primary hover:text-white"
+                    onClick={handleAuthNavigation}
+                  >
+                    Login
+                  </Button>
+                  <Button 
+                    className="flex-1 bg-primary text-white hover:bg-primary-dark"
+                    onClick={handleAuthNavigation}
+                  >
+                    Sign Up
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         )}
