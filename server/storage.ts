@@ -3,6 +3,10 @@ import {
   contactSubmissions, type ContactSubmission, type InsertContactSubmission,
   classes, type Class, type InsertClass
 } from "@shared/schema";
+import session from "express-session";
+import createMemoryStore from "memorystore";
+
+const MemoryStore = createMemoryStore(session);
 
 export interface IStorage {
   // User operations
@@ -19,6 +23,9 @@ export interface IStorage {
   getClassById(id: number): Promise<Class | undefined>;
   getFeaturedClasses(limit?: number): Promise<Class[]>;
   getClassesByCategory(category: string): Promise<Class[]>;
+  
+  // Session store
+  sessionStore: session.Store;
 }
 
 export class MemStorage implements IStorage {
@@ -28,6 +35,7 @@ export class MemStorage implements IStorage {
   private userId: number;
   private submissionId: number;
   private classId: number;
+  sessionStore: session.Store;
 
   constructor() {
     this.users = new Map();
@@ -36,6 +44,11 @@ export class MemStorage implements IStorage {
     this.userId = 1;
     this.submissionId = 1;
     this.classId = 1;
+    
+    // Initialize the session store
+    this.sessionStore = new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    });
     
     // Initialize with some sample classes
     this.initializeClasses();
