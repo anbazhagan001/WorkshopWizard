@@ -47,6 +47,9 @@ export const classes = pgTable("classes", {
   time: text("time").notNull(),
   seats: integer("seats").notNull(),
   imageUrl: text("image_url").notNull(),
+  format: text("format").notNull().default("in-person"),
+  startDate: timestamp("start_date").defaultNow(),
+  rating: integer("rating").notNull().default(5),
 });
 
 export const insertClassSchema = createInsertSchema(classes).pick({
@@ -59,6 +62,9 @@ export const insertClassSchema = createInsertSchema(classes).pick({
   time: true,
   seats: true,
   imageUrl: true,
+  format: true,
+  startDate: true, 
+  rating: true,
 });
 
 // Type exports

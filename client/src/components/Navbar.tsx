@@ -27,19 +27,19 @@ export default function Navbar() {
             <Link href="/" className="font-medium text-secondary-dark hover:text-primary transition">
               Home
             </Link>
-            <Link href="#explore" className="font-medium text-secondary-dark hover:text-primary transition">
+            <Link href="/explore" className="font-medium text-secondary-dark hover:text-primary transition">
               Explore Classes
             </Link>
-            <Link href="#about" className="font-medium text-secondary-dark hover:text-primary transition">
+            <Link href="/about" className="font-medium text-secondary-dark hover:text-primary transition">
               About Us
             </Link>
-            <Link href="#team" className="font-medium text-secondary-dark hover:text-primary transition">
+            <Link href="/#team" className="font-medium text-secondary-dark hover:text-primary transition">
               Our Team
             </Link>
-            <Link href="#testimonials" className="font-medium text-secondary-dark hover:text-primary transition">
+            <Link href="/#testimonials" className="font-medium text-secondary-dark hover:text-primary transition">
               Testimonials
             </Link>
-            <Link href="#contact" className="font-medium text-secondary-dark hover:text-primary transition">
+            <Link href="/#contact" className="font-medium text-secondary-dark hover:text-primary transition">
               Contact
             </Link>
           </div>
@@ -73,19 +73,19 @@ export default function Navbar() {
               <Link href="/" className="font-medium text-secondary-dark hover:text-primary transition py-2">
                 Home
               </Link>
-              <Link href="#explore" className="font-medium text-secondary-dark hover:text-primary transition py-2">
+              <Link href="/explore" className="font-medium text-secondary-dark hover:text-primary transition py-2">
                 Explore Classes
               </Link>
-              <Link href="#about" className="font-medium text-secondary-dark hover:text-primary transition py-2">
+              <Link href="/about" className="font-medium text-secondary-dark hover:text-primary transition py-2">
                 About Us
               </Link>
-              <Link href="#team" className="font-medium text-secondary-dark hover:text-primary transition py-2">
+              <Link href="/#team" className="font-medium text-secondary-dark hover:text-primary transition py-2">
                 Our Team
               </Link>
-              <Link href="#testimonials" className="font-medium text-secondary-dark hover:text-primary transition py-2">
+              <Link href="/#testimonials" className="font-medium text-secondary-dark hover:text-primary transition py-2">
                 Testimonials
               </Link>
-              <Link href="#contact" className="font-medium text-secondary-dark hover:text-primary transition py-2">
+              <Link href="/#contact" className="font-medium text-secondary-dark hover:text-primary transition py-2">
                 Contact
               </Link>
               <div className="flex space-x-2 pt-2">

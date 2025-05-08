@@ -26,14 +26,14 @@ export default function ExploreClasses() {
   const [sortOrder, setSortOrder] = useState("recommended");
   
   // Get all classes
-  const { data: classes, isLoading, error } = useQuery({
+  const { data: classes, isLoading, error } = useQuery<Class[]>({
     queryKey: ['/api/classes'],
     staleTime: 60 * 1000, // 1 minute
   });
   
   // Function to filter classes based on filters
   const filteredClasses = () => {
-    if (!classes) return [];
+    if (!classes || !Array.isArray(classes)) return [];
     
     return classes.filter((classItem: Class) => {
       // Search filter
@@ -81,9 +81,14 @@ export default function ExploreClasses() {
     } else if (sortOrder === "priceHighToLow") {
       return [...filtered].sort((a, b) => b.price - a.price);
     } else if (sortOrder === "newest") {
-      return [...filtered].sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
+      return [...filtered].sort((a, b) => {
+        // Handle potential null or undefined startDate values
+        const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
+        const dateB = b.startDate ? new Date(b.startDate).getTime() : 0;
+        return dateB - dateA;
+      });
     } else if (sortOrder === "highestRated") {
-      return [...filtered].sort((a, b) => b.rating - a.rating);
+      return [...filtered].sort((a, b) => (b.rating || 0) - (a.rating || 0));
     }
     
     // Default: recommended
