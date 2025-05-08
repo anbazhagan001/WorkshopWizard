@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useQuery } from "@tanstack/react-query";
 import { Class } from "@shared/schema";
 import { Link } from "wouter";
-import { CalendarDays, BookOpen, Clock, Award } from "lucide-react";
+import { CalendarDays, BookOpen, Clock, Award, Loader2 } from "lucide-react";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -70,7 +70,10 @@ export default function Dashboard() {
               <h2 className="text-2xl font-bold mb-4">Recommended For You</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {isLoading ? (
-                  <p>Loading recommendations...</p>
+                  <div className="col-span-2 flex justify-center items-center py-12">
+                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                    <span className="ml-2">Loading recommendations...</span>
+                  </div>
                 ) : classes && classes.length > 0 ? (
                   classes.slice(0, 4).map((classItem) => (
                     <Card key={classItem.id}>
@@ -115,7 +118,24 @@ export default function Dashboard() {
                     </Card>
                   ))
                 ) : (
-                  <p>No recommendations available at this time.</p>
+                  <div className="col-span-2">
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>No recommendations available</CardTitle>
+                        <CardDescription>We're preparing personalized recommendations for you.</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-neutral-600">
+                          Browse our class catalog to find something that interests you while we get to know your preferences.
+                        </p>
+                      </CardContent>
+                      <CardFooter>
+                        <Link href="/explore">
+                          <Button className="w-full">Browse Classes</Button>
+                        </Link>
+                      </CardFooter>
+                    </Card>
+                  </div>
                 )}
               </div>
             </div>
