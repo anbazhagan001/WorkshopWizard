@@ -24,13 +24,13 @@ pipeline {
         
         stage('Lint') {
             steps {
-                sh 'npm run lint || true' // Add a lint script to package.json
+                sh 'chmod +x ./ci-cd-scripts.sh && ./ci-cd-scripts.sh lint || true'
             }
         }
         
         stage('Test') {
             steps {
-                sh 'npm test || true' // Add a test script to package.json
+                sh 'chmod +x ./ci-cd-scripts.sh && ./ci-cd-scripts.sh test || true'
             }
         }
         
