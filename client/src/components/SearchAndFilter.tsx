@@ -13,7 +13,7 @@ import { useState } from "react";
 
 export default function SearchAndFilter() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedDate, setSelectedDate] = useState("");
   
   const handleSubmit = (e: React.FormEvent) => {
@@ -55,7 +55,7 @@ export default function SearchAndFilter() {
                     <SelectValue placeholder="All Categories" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Categories</SelectItem>
+                    <SelectItem value="all">All Categories</SelectItem>
                     <SelectItem value="tech">Technology</SelectItem>
                     <SelectItem value="art">Art & Design</SelectItem>
                     <SelectItem value="business">Business</SelectItem>

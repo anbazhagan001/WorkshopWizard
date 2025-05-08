@@ -17,30 +17,30 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-2">
             <FaGraduationCap className="text-primary text-2xl" />
-            <Link href="/">
-              <a className="font-heading font-bold text-xl sm:text-2xl text-primary">ClassConnect</a>
+            <Link href="/" className="font-heading font-bold text-xl sm:text-2xl text-primary">
+              ClassConnect
             </Link>
           </div>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/">
-              <a className="font-medium text-secondary-dark hover:text-primary transition">Home</a>
+            <Link href="/" className="font-medium text-secondary-dark hover:text-primary transition">
+              Home
             </Link>
-            <Link href="#explore">
-              <a className="font-medium text-secondary-dark hover:text-primary transition">Explore Classes</a>
+            <Link href="#explore" className="font-medium text-secondary-dark hover:text-primary transition">
+              Explore Classes
             </Link>
-            <Link href="#about">
-              <a className="font-medium text-secondary-dark hover:text-primary transition">About Us</a>
+            <Link href="#about" className="font-medium text-secondary-dark hover:text-primary transition">
+              About Us
             </Link>
-            <Link href="#team">
-              <a className="font-medium text-secondary-dark hover:text-primary transition">Our Team</a>
+            <Link href="#team" className="font-medium text-secondary-dark hover:text-primary transition">
+              Our Team
             </Link>
-            <Link href="#testimonials">
-              <a className="font-medium text-secondary-dark hover:text-primary transition">Testimonials</a>
+            <Link href="#testimonials" className="font-medium text-secondary-dark hover:text-primary transition">
+              Testimonials
             </Link>
-            <Link href="#contact">
-              <a className="font-medium text-secondary-dark hover:text-primary transition">Contact</a>
+            <Link href="#contact" className="font-medium text-secondary-dark hover:text-primary transition">
+              Contact
             </Link>
           </div>
           
@@ -70,23 +70,23 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <div className="md:hidden pb-4">
             <div className="flex flex-col space-y-3">
-              <Link href="/">
-                <a className="font-medium text-secondary-dark hover:text-primary transition py-2">Home</a>
+              <Link href="/" className="font-medium text-secondary-dark hover:text-primary transition py-2">
+                Home
               </Link>
-              <Link href="#explore">
-                <a className="font-medium text-secondary-dark hover:text-primary transition py-2">Explore Classes</a>
+              <Link href="#explore" className="font-medium text-secondary-dark hover:text-primary transition py-2">
+                Explore Classes
               </Link>
-              <Link href="#about">
-                <a className="font-medium text-secondary-dark hover:text-primary transition py-2">About Us</a>
+              <Link href="#about" className="font-medium text-secondary-dark hover:text-primary transition py-2">
+                About Us
               </Link>
-              <Link href="#team">
-                <a className="font-medium text-secondary-dark hover:text-primary transition py-2">Our Team</a>
+              <Link href="#team" className="font-medium text-secondary-dark hover:text-primary transition py-2">
+                Our Team
               </Link>
-              <Link href="#testimonials">
-                <a className="font-medium text-secondary-dark hover:text-primary transition py-2">Testimonials</a>
+              <Link href="#testimonials" className="font-medium text-secondary-dark hover:text-primary transition py-2">
+                Testimonials
               </Link>
-              <Link href="#contact">
-                <a className="font-medium text-secondary-dark hover:text-primary transition py-2">Contact</a>
+              <Link href="#contact" className="font-medium text-secondary-dark hover:text-primary transition py-2">
+                Contact
               </Link>
               <div className="flex space-x-2 pt-2">
                 <Button variant="outline" className="flex-1 border-primary text-primary hover:bg-primary hover:text-white">
