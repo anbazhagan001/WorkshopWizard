@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  classconnect:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: classconnect-app
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+  # Optional database service (if needed in the future)
+  # db:
+  #   image: postgres:14-alpine
+  #   container_name: classconnect-db
+  #   volumes:
+  #     - db-data:/var/lib/postgresql/data
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #     - POSTGRES_DB=classconnect
+  #   ports:
+  #     - "5432:5432"
+
+# volumes:
+#   db-data:
