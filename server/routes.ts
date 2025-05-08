@@ -5,6 +5,16 @@ import { insertContactSubmissionSchema } from "@shared/schema";
 import { fromZodError } from "zod-validation-error";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Health check endpoint for CI/CD monitoring
+  app.get('/health', async (_req: Request, res: Response) => {
+    res.json({ 
+      status: 'ok',
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+      version: process.env.npm_package_version || 'unknown'
+    });
+  });
+
   // API routes
   const apiRouter = app.route('/api');
   

@@ -1,0 +1,48 @@
+# Monitoring configuration for ClassConnect application
+
+endpoints:
+  # Main application health check
+  - name: ClassConnect App Health
+    url: https://classconnect.example.com/health
+    method: GET
+    interval: 60  # Check every 60 seconds
+    timeout: 5    # Timeout after 5 seconds
+    expected_status_codes: [200]
+    expected_response_contains: '{"status":"ok"}'
+    alert_after: 3  # Alert after 3 consecutive failures
+    
+  # API endpoints health check
+  - name: ClassConnect API - Featured Classes
+    url: https://classconnect.example.com/api/classes/featured
+    method: GET
+    interval: 300  # Check every 5 minutes
+    timeout: 10
+    expected_status_codes: [200]
+    alert_after: 2
+    
+# Alert notifications
+notifications:
+  # Email alerts
+  - type: email
+    name: Development Team
+    recipients:
+      - dev-team@example.com
+      - ops@example.com
+    send_resolved: true
+    
+  # Slack alerts
+  - type: slack
+    name: DevOps Channel
+    webhook_url: https://hooks.slack.com/services/XXXXXXXXX/YYYYYYYYY/ZZZZZZZZZZZZZZZZZZZZZZZZ
+    channel: '#devops-alerts'
+    send_resolved: true
+    
+# Incident management
+incident_settings:
+  auto_create_incidents: true
+  resolve_after: 5  # Auto-resolve after 5 successful checks
+  
+# Dashboard settings
+dashboard:
+  refresh_interval: 30  # Refresh dashboard every 30 seconds
+  retention_days: 30    # Keep metrics for 30 days
