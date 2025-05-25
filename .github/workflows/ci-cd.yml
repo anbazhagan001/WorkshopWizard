@@ -43,7 +43,7 @@ jobs:
         
   docker:
     needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     
     steps:
@@ -69,14 +69,13 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         context: .
-        push: ${{ github.ref == 'refs/heads/main' }}
-        tags: |
-          ${{ secrets.DOCKER_HUB_USERNAME }}/classconnect:latest
-          ${{ secrets.DOCKER_HUB_USERNAME }}/classconnect:${{ github.sha }}
-          
+        push: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' }}
+      tags: |
+  ${{ secrets.DOCKER_HUB_USERNAME }}/classconnect:${{ github.ref_name }}
+  ${{ secrets.DOCKER_HUB_USERNAME }}/classconnect:${{ github.sha }}        
   deploy-staging:
     needs: docker
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     
     steps:
@@ -94,7 +93,7 @@ jobs:
           
   deploy-production:
     needs: docker
-    if: github.ref == 'refs/heads/main'
+   if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: production
